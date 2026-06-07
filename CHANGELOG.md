@@ -66,4 +66,4 @@
 
 ---
 
-[1.0.0]: https://github.com/PlateWin/LucidMind/releases/tag/v1.0.0
+[1.0.0]: https://github.com/PlateWin/MindDream/releases/tag/v1.0.0
