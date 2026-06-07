@@ -50,6 +50,19 @@ desktop.ini
 .vscode/
 *.code-workspace
 
+# ----- 内部文件（勿提交至公开仓库） -----
+文献/
+软件著作权申请资料/
+.claude/
+agent.txt
+madas_prompts.md
+*项目计划书*.pdf
+*团队指导书*.pdf
+*任务规划*.pdf
+*.log
+replay_*.log
+hs_err_*.log
+
 # ----- 数据与备份（可选：若不想提交大文件） -----
 # data/*.jsonl
 # *.sql.gz
