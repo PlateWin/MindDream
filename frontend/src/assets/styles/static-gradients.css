@@ -1,0 +1,53 @@
+/* ================== 确保渐变文字完全静态 ================== */
+
+/* 所有渐变文字类 - 完全静态，无任何动画 */
+.consciousness-text,
+.text-gradient,
+.warm-gradient {
+    background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 50%, #FFB6C1 100%) !important;
+    background-size: 100% 100% !important;
+    background-position: 0% 0% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800;
+    /* 禁止任何动画 */
+    animation: none !important;
+    transition: none !important;
+}
+
+/* 禁用所有可能的文字渐变动画 */
+@keyframes gradientFlow,
+@keyframes warmGradient,
+@keyframes consciousnessFlow {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+/* Hero标题 - 静态渐变 */
+.hero-title .consciousness-text,
+.page-title .consciousness-text,
+h1.consciousness-text,
+h2.consciousness-text {
+    background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 100%) !important;
+    background-size: 100% 100% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: none !important;
+}
+
+/* 数字强调 - 静态渐变 */
+.highlight-number,
+.stat-value-mega,
+.stat-value-medium {
+    background: linear-gradient(135deg, #FF9A8B, #FFD983) !important;
+    background-size: 100% 100% !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: none !important;
+}

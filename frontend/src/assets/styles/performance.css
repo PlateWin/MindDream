@@ -1,0 +1,62 @@
+/* ================== 修复搜索性能 + UI优化 ================== */
+
+/* 优化GlassCard性能 - 减少重绘 */
+.glass-card {
+    will-change: transform, box-shadow;
+    contain: layout style paint;
+}
+
+/* 优化搜索结果grid - 防止layout thrashing */
+.results-grid {
+    contain: layout;
+}
+
+.result-card {
+    will-change: transform;
+}
+
+/* 防止过多动画同时触发 */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 优化Blob morphing性能 */
+.mega-blob,
+.blob {
+    will-change: border-radius, transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 优化粒子系统 - 减少数量以提升性能 */
+.particles .particle {
+    will-change: transform, opacity;
+}
+
+/* 防止输入框造成重排 */
+.dream-input,
+.dream-textarea {
+    contain: layout style;
+}
+
+/* 优化分页组件性能 */
+.pagination-wrapper {
+    contain: layout;
+}
+
+/* 改进hover性能 */
+.glass-card-interactive:hover {
+    transform: translateZ(0);
+}
+
+/* 减少不必要的渲染 */
+.dream-loader {
+    contain: layout style paint;
+}

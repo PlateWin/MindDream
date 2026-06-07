@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd //c \"docker ps --filter name=mysql --format '{{.Names}} {{.Status}}' 2>&1 && docker ps -a --filter name=mysql --format '{{.Names}} {{.Status}}' 2>&1\")",
+      "Bash(cmd //c \"tasklist | findstr -i mysql\")",
+      "Bash(cmd //c \"where mysql 2>&1\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"SHOW DATABASES;\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"USE minddream; SHOW TABLES; SELECT COUNT\\(*\\) AS table_count FROM information_schema.tables WHERE table_schema='minddream';\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"USE minddream; SELECT 'dreams' AS table_name, COUNT\\(*\\) AS rows FROM dreams UNION ALL SELECT 'statistics', COUNT\\(*\\) FROM statistics;\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"USE minddream; SELECT COUNT\\(*\\) FROM dreams; SELECT COUNT\\(*\\) FROM statistics;\")",
+      "Bash(mvn spring-boot:run)",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"USE minddream; SELECT emotions_cn FROM dreams WHERE emotions_cn IS NOT NULL AND emotions_cn != '' LIMIT 10;\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"USE minddream; SELECT gender, age_group, COUNT\\(*\\) FROM dreams GROUP BY gender, age_group ORDER BY gender, age_group;\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 -e \"USE minddream; SELECT emotions_cn FROM dreams WHERE emotions_cn IS NOT NULL AND emotions_cn != '' LIMIT 5;\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 --default-character-set=utf8mb4 -e \"USE minddream; SELECT DISTINCT age_group FROM dreams;\")",
+      "Bash(\"C:/Program Files/MySQL/MySQL Server 8.0/bin/mysql.exe\" -uroot -pwsxhr666 --default-character-set=utf8mb4 -e \"USE minddream; SELECT DISTINCT SUBSTRING_INDEX\\(SUBSTRING_INDEX\\(REPLACE\\(REPLACE\\(emotions_cn, '[', ''\\), ']', ''\\), ',', numbers.n\\), ',', -1\\) AS emotion FROM \\(SELECT 1 n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8\\) numbers INNER JOIN dreams ON CHAR_LENGTH\\(emotions_cn\\) - CHAR_LENGTH\\(REPLACE\\(emotions_cn, ',', ''\\)\\) >= numbers.n - 1 WHERE emotions_cn IS NOT NULL AND emotions_cn != '' ORDER BY emotion;\")",
+      "Bash(cmd //c \"for /f \\\\\"tokens=5\\\\\" %a in \\('netstat -ano ^| findstr :8080.*LISTENING'\\) do taskkill /f /pid %a 2>nul\")",
+      "Bash(cmd //c \"netstat -ano | findstr :8080 | findstr LISTENING\")",
+      "Bash(cmd //c \"taskkill /f /pid 39688\")",
+      "Bash(curl -s \"http://localhost:8080/api/statistics/spectrum\")",
+      "Bash(curl -s \"http://localhost:8080/api/statistics/gender-emotions\")",
+      "Bash(cmd //c \"netstat -ano | findstr :5173\")",
+      "Bash(curl -s \"http://localhost:5173/\")",
+      "Bash(curl -s \"http://localhost:5173/src/views/Statistics.vue\")",
+      "Bash(node -e \"const e = require\\('echarts'\\); try { new e.graphic.RadialGradient\\(0.5,0.5,1,[{offset:0,color:'red'},{offset:1,color:'blue'}]\\); console.log\\('OK'\\); } catch\\(err\\) { console.log\\('ERROR:', err.message\\); }\")",
+      "Bash(curl -s \"http://localhost:5173/api/statistics/spectrum\")",
+      "Bash(curl -s \"http://localhost:5173/api/statistics/overview\")",
+      "Bash(node -e ' *)",
+      "Bash(curl -s \"http://localhost:5173/src/App.vue\")",
+      "Bash(curl -s \"http://localhost:5173/statistics\")"
+    ]
+  }
+}

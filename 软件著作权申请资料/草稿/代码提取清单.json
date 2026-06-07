@@ -1,0 +1,114 @@
+{
+  "software_name": "MindDream心理梦境分析平台",
+  "version": "V1.0",
+  "project_root": "D:\\project\\心理",
+  "file_count": 10,
+  "material_line_count": 4769,
+  "source_line_count": 4749,
+  "selected_source_line_count": 4749,
+  "lines_per_page": 50,
+  "total_pages": 96,
+  "target_pages": 60,
+  "available_candidate_line_count": 10761,
+  "available_candidate_pages": 216,
+  "supplement_status": "候选源码可达到前30页/后30页要求",
+  "mode": "front30_back30",
+  "selection_file": "软件著作权申请资料\\草稿\\代码文件选择.json",
+  "outputs": [
+    "代码-前30页.md",
+    "代码-后30页.md"
+  ],
+  "files": [
+    {
+      "path": "frontend/src/App.vue",
+      "source_line_count": 334,
+      "selected_line_start": 1,
+      "selected_line_end": 334,
+      "selected_line_count": 334,
+      "material_line_start": 1,
+      "material_line_end": 336
+    },
+    {
+      "path": "frontend/src/main.js",
+      "source_line_count": 40,
+      "selected_line_start": 1,
+      "selected_line_end": 40,
+      "selected_line_count": 40,
+      "material_line_start": 337,
+      "material_line_end": 378
+    },
+    {
+      "path": "frontend/src/router/index.js",
+      "source_line_count": 52,
+      "selected_line_start": 1,
+      "selected_line_end": 52,
+      "selected_line_count": 52,
+      "material_line_start": 379,
+      "material_line_end": 432
+    },
+    {
+      "path": "frontend/src/views/AIAnalysis.vue",
+      "source_line_count": 934,
+      "selected_line_start": 1,
+      "selected_line_end": 934,
+      "selected_line_count": 934,
+      "material_line_start": 433,
+      "material_line_end": 1368
+    },
+    {
+      "path": "frontend/src/views/Dashboard.vue",
+      "source_line_count": 1388,
+      "selected_line_start": 1,
+      "selected_line_end": 1388,
+      "selected_line_count": 1388,
+      "material_line_start": 1369,
+      "material_line_end": 2758
+    },
+    {
+      "path": "frontend/src/views/DreamDetail.vue",
+      "source_line_count": 485,
+      "selected_line_start": 1,
+      "selected_line_end": 485,
+      "selected_line_count": 485,
+      "material_line_start": 2759,
+      "material_line_end": 3245
+    },
+    {
+      "path": "frontend/src/views/DreamList.vue",
+      "source_line_count": 516,
+      "selected_line_start": 1,
+      "selected_line_end": 516,
+      "selected_line_count": 516,
+      "material_line_start": 3246,
+      "material_line_end": 3763
+    },
+    {
+      "path": "frontend/src/views/Search.vue",
+      "source_line_count": 457,
+      "selected_line_start": 1,
+      "selected_line_end": 457,
+      "selected_line_count": 457,
+      "material_line_start": 3764,
+      "material_line_end": 4222
+    },
+    {
+      "path": "frontend/src/views/Statistics.vue",
+      "source_line_count": 445,
+      "selected_line_start": 1,
+      "selected_line_end": 445,
+      "selected_line_count": 445,
+      "material_line_start": 4223,
+      "material_line_end": 4669
+    },
+    {
+      "path": "frontend/src/api/dream.js",
+      "source_line_count": 98,
+      "selected_line_start": 1,
+      "selected_line_end": 98,
+      "selected_line_count": 98,
+      "material_line_start": 4670,
+      "material_line_end": 4769
+    }
+  ],
+  "safe_software_filename": "MindDream心理梦境分析平台"
+}

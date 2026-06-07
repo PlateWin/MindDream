@@ -1,0 +1,60 @@
+/* ================== Spline液态玻璃集成样式 ================== */
+
+/* 卡片使用Canvas纹理叠加 */
+.spline-textured-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spline-textured-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--spline-texture);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+    animation: textureShift 10s ease-in-out infinite;
+}
+
+@keyframes textureShift {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-20px, -20px) scale(1.1);
+    }
+}
+
+/* 增强卡片玻璃感以配合Spline纹理 */
+.spline-enhanced-glass {
+    backdrop-filter: blur(140px) saturate(250%) brightness(118%);
+    -webkit-backdrop-filter: blur(140px) saturate(250%) brightness(118%);
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.92) 0%,
+            rgba(255, 255, 255, 0.75) 50%,
+            rgba(255, 255, 255, 0.82) 100%);
+}
+
+/* Spline背景层确保在最底部 */
+.spline-background-layer {
+    z-index: -2 !important;
+}
+
+/* 页面内容层 */
+.page-content-layer {
+    position: relative;
+    z-index: 1;
+}
+
+/* 卡片内容在纹理之上 */
+.spline-textured-card>* {
+    position: relative;
+    z-index: 2;
+}

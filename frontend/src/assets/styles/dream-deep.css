@@ -1,0 +1,423 @@
+/* ================== 梦境主题深度优化 ================== */
+
+/* CSS @property - 实现平滑色相动画 */
+@property --dream-hue {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --dream-saturation {
+    syntax: '<percentage>';
+    initial-value: 70%;
+    inherits: false;
+}
+
+@property --dream-lightness {
+    syntax: '<percentage>';
+    initial-value: 85%;
+    inherits: false;
+}
+
+/* 梦境色彩流动背景 */
+body {
+    --dream-hue: 0;
+    --dream-saturation: 70%;
+    --dream-lightness: 85%;
+
+    background: linear-gradient(135deg,
+            hsl(var(--dream-hue), var(--dream-saturation), var(--dream-lightness)),
+            hsl(calc(var(--dream-hue) + 60), calc(var(--dream-saturation) - 10%), calc(var(--dream-lightness) + 5%)),
+            hsl(calc(var(--dream-hue) + 120), var(--dream-saturation), var(--dream-lightness)));
+    background-size: 400% 400%;
+    animation: dreamColorShift 30s ease-in-out infinite;
+}
+
+@keyframes dreamColorShift {
+    0% {
+        --dream-hue: 0;
+        background-position: 0% 50%;
+    }
+
+    25% {
+        --dream-hue: 90;
+        background-position: 100% 50%;
+    }
+
+    50% {
+        --dream-hue: 180;
+        background-position: 100% 100%;
+    }
+
+    75% {
+        --dream-hue: 270;
+        background-position: 0% 100%;
+    }
+
+    100% {
+        --dream-hue: 360;
+        background-position: 0% 50%;
+    }
+}
+
+/* Blob形状背景 - 梦境的模糊边界 */
+.dream-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+    animation: blobMorph 20s ease-in-out infinite;
+}
+
+.blob-1 {
+    width: 500px;
+    height: 500px;
+    top: 10%;
+    left: 20%;
+    background: radial-gradient(circle, #FFD983, #FF9A8B);
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    top: 60%;
+    right: 15%;
+    background: radial-gradient(circle, #FFB6C1, #A5B4FC);
+    animation-delay: 7s;
+}
+
+.blob-3 {
+    width: 450px;
+    height: 450px;
+    bottom: 15%;
+    left: 10%;
+    background: radial-gradient(circle, #E0F2FE, #A8D5BA);
+    animation-delay: 14s;
+}
+
+@keyframes blobMorph {
+
+    0%,
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    25% {
+        border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+        transform: translate(20px, -30px) rotate(90deg) scale(1.1);
+    }
+
+    50% {
+        border-radius: 30% 70% 60% 40% / 60% 40% 50% 60%;
+        transform: translate(-30px, 20px) rotate(180deg) scale(0.9);
+    }
+
+    75% {
+        border-radius: 70% 30% 40% 60% / 40% 60% 50% 40%;
+        transform: translate(10px, 30px) rotate(270deg) scale(1.05);
+    }
+}
+
+/* 记忆涟漪效果 */
+.memory-ripple {
+    position: relative;
+    overflow: visible;
+}
+
+.memory-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 217, 131, 0.5);
+    transform: translate(-50%, -50%);
+    animation: rippleExpand 3s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes rippleExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+/* 时间扭曲动画 - 不同速度层 */
+.time-slow {
+    animation-duration: calc(var(--base-duration, 1s) * 3);
+}
+
+.time-normal {
+    animation-duration: var(--base-duration, 1s);
+}
+
+.time-fast {
+    animation-duration: calc(var(--base-duration, 1s) * 0.5);
+}
+
+/* 梦境碎片效果 */
+.dream-fragments {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.fragment {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(255, 217, 131, 0.2), rgba(255, 182, 193, 0.2));
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: fragmentFloat 15s ease-in-out infinite;
+    filter: blur(2px);
+    opacity: 0.4;
+}
+
+.fragment:nth-child(1) {
+    top: 15%;
+    left: 25%;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.fragment:nth-child(2) {
+    top: 65%;
+    left: 70%;
+    animation-delay: 6s;
+    animation-duration: 20s;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+}
+
+.fragment:nth-child(3) {
+    top: 40%;
+    left: 10%;
+    animation-delay: 12s;
+    animation-duration: 22s;
+    clip-path: circle(50% at 50% 50%);
+}
+
+@keyframes fragmentFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translate(50px, -80px) rotate(180deg);
+        opacity: 0.6;
+    }
+}
+
+/* 超现实浮动 - 反重力 */
+.anti-gravity {
+    animation: antiGravityFloat 10s ease-in-out infinite;
+}
+
+@keyframes antiGravityFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-30px) translateX(15px) rotate(5deg);
+    }
+
+    50% {
+        transform: translateY(-50px) translateX(-10px) rotate(-3deg);
+    }
+
+    75% {
+        transform: translateY(-20px) translateX(20px) rotate(7deg);
+    }
+}
+
+/* 流体形态卡片 */
+.liquid-card {
+    clip-path: path('M 0 50 Q 25 0, 50 50 T 100 50 L 100 100 L 0 100 Z');
+    animation: liquidMorph 8s ease-in-out infinite;
+}
+
+@keyframes liquidMorph {
+
+    0%,
+    100% {
+        clip-path: path('M 0 50 Q 25 0, 50 50 T 100 50 L 100 100 L 0 100 Z');
+    }
+
+    50% {
+        clip-path: path('M 0 50 Q 25 100, 50 50 T 100 50 L 100 100 L 0 100 Z');
+    }
+}
+
+/* 梦境粒子升级 - 更有机 */
+.particle {
+    background: radial-gradient(circle,
+            hsl(calc(var(--dream-hue) + 30), 80%, 70%) 0%,
+            hsl(calc(var(--dream-hue) + 60), 70%, 80%) 50%,
+            transparent 100%);
+    animation: organicParticle 20s ease-in-out infinite;
+}
+
+@keyframes organicParticle {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(30px) scale(1.2) rotate(180deg);
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-10vh) translateX(-20px) scale(0.8) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 梦境扭曲效果 */
+.dream-distortion {
+    position: relative;
+    animation: dreamDistort 6s ease-in-out infinite;
+}
+
+@keyframes dreamDistort {
+
+    0%,
+    100% {
+        filter: blur(0) hue-rotate(0deg);
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    }
+
+    50% {
+        filter: blur(0.5px) hue-rotate(30deg);
+        transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
+    }
+}
+
+/* 梦境渐隐边缘 */
+.dream-fade-edges {
+    position: relative;
+}
+
+.dream-fade-edges::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            transparent 40%,
+            rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* 意识流动文字 */
+.consciousness-text {
+    background: linear-gradient(90deg,
+            hsl(calc(var(--dream-hue)), 80%, 60%),
+            hsl(calc(var(--dream-hue) + 120), 80%, 60%),
+            hsl(calc(var(--dream-hue) + 240), 80%, 60%));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: consciousnessFlow 8s linear infinite;
+}
+
+@keyframes consciousnessFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* 深层梦境光效 */
+.deep-dream-glow {
+    box-shadow:
+        0 0 30px hsl(calc(var(--dream-hue)), 70%, 70%, 0.3),
+        0 0 60px hsl(calc(var(--dream-hue) + 60), 60%, 75%, 0.2),
+        inset 0 0 40px hsl(calc(var(--dream-hue) + 120), 50%, 85%, 0.1);
+    animation: deepGlowPulse 5s ease-in-out infinite;
+}
+
+@keyframes deepGlowPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 30px hsl(calc(var(--dream-hue)), 70%, 70%, 0.3),
+            0 0 60px hsl(calc(var(--dream-hue) + 60), 60%, 75%, 0.2),
+            inset 0 0 40px hsl(calc(var(--dream-hue) + 120), 50%, 85%, 0.1);
+    }
+
+    50% {
+        box-shadow:
+            0 0 50px hsl(calc(var(--dream-hue)), 70%, 70%, 0.5),
+            0 0 100px hsl(calc(var(--dream-hue) + 60), 60%, 75%, 0.4),
+            inset 0 0 60px hsl(calc(var(--dream-hue) + 120), 50%, 85%, 0.2);
+    }
+}
+
+/* 非线性透视 */
+.surreal-perspective {
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    animation: surrealRotate 15s ease-in-out infinite;
+}
+
+@keyframes surrealRotate {
+
+    0%,
+    100% {
+        transform: perspective(1500px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    33% {
+        transform: perspective(1500px) rotateX(5deg) rotateY(-3deg) rotateZ(2deg);
+    }
+
+    66% {
+        transform: perspective(1500px) rotateX(-3deg) rotateY(5deg) rotateZ(-2deg);
+    }
+}

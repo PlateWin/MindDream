@@ -1,0 +1,56 @@
+# MindDream 项目 .gitignore
+
+# ----- 后端 (Java / Maven) -----
+backend/target/
+backend/*.jar
+backend/*.war
+backend/*.class
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/.settings/
+backend/.project
+backend/.classpath
+backend/.factorypath
+
+# ----- 前端 (Node) -----
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# ----- 环境与敏感配置 -----
+.env
+.env.local
+.env.*.local
+*.env
+backend/src/main/resources/application-local.yml
+backend/src/main/resources/application-prod.yml
+
+# ----- 日志与临时文件 -----
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*~
+
+# ----- 操作系统 -----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----- IDE -----
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+
+# ----- 数据与备份（可选：若不想提交大文件） -----
+# data/*.jsonl
+# *.sql.gz
+# backup/

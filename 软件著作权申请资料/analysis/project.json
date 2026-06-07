@@ -1,0 +1,154 @@
+{
+  "project_root": "D:\\project\\心理",
+  "project_name": "心理",
+  "software_name_candidate": "minddream frontend",
+  "package": {
+    "name": "minddream-frontend",
+    "path": "frontend/package.json",
+    "version": "1.0.0",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+    },
+    "dependency_names": [
+      "@element-plus/icons-vue",
+      "@splinetool/runtime",
+      "@vitejs/plugin-vue",
+      "axios",
+      "echarts",
+      "element-plus",
+      "vite",
+      "vue",
+      "vue-router"
+    ]
+  },
+  "frameworks": [
+    "Vite",
+    "Vue"
+  ],
+  "language": "JavaScript、Java、SQL",
+  "source": {
+    "file_count": 46,
+    "line_count": 10669,
+    "total_file_count": 46,
+    "total_line_count": 10669,
+    "extension_counts": {
+      ".css": 9,
+      ".html": 1,
+      ".java": 15,
+      ".js": 3,
+      ".sql": 1,
+      ".vue": 17
+    },
+    "category_counts": {
+      "api": 2,
+      "component": 9,
+      "entry": 2,
+      "page": 7,
+      "route": 1,
+      "source": 16,
+      "style": 9
+    },
+    "categorized_files": {
+      "entry": [
+        "frontend/src/App.vue",
+        "frontend/src/main.js"
+      ],
+      "route": [
+        "frontend/src/router/index.js"
+      ],
+      "page": [
+        "frontend/src/views/AIAnalysis.vue",
+        "frontend/src/views/Dashboard.vue",
+        "frontend/src/views/DreamDetail.vue",
+        "frontend/src/views/DreamList.vue",
+        "frontend/src/views/NotFound.vue",
+        "frontend/src/views/Search.vue",
+        "frontend/src/views/Statistics.vue"
+      ],
+      "component": [
+        "frontend/src/components/ArtisticEffects.vue",
+        "frontend/src/components/DreamButton.vue",
+        "frontend/src/components/DreamHeroSection.vue",
+        "frontend/src/components/DreamInput.vue",
+        "frontend/src/components/DreamLoader.vue",
+        "frontend/src/components/DreamTag.vue",
+        "frontend/src/components/GlassCard.vue",
+        "frontend/src/components/SplineBackground.vue",
+        "frontend/src/components/SplineTexture.vue"
+      ],
+      "api": [
+        "backend/src/main/java/com/minddream/dto/SearchRequest.java",
+        "frontend/src/api/dream.js"
+      ],
+      "style": [
+        "frontend/src/assets/styles/apple-glass.css",
+        "frontend/src/assets/styles/apple-unified.css",
+        "frontend/src/assets/styles/dream-deep.css",
+        "frontend/src/assets/styles/ghibli.css",
+        "frontend/src/assets/styles/main.css",
+        "frontend/src/assets/styles/performance.css",
+        "frontend/src/assets/styles/spline-integration.css",
+        "frontend/src/assets/styles/static-gradients.css",
+        "frontend/src/assets/styles/typography.css"
+      ],
+      "source": [
+        "backend/src/main/java/com/minddream/MindDreamApplication.java",
+        "backend/src/main/java/com/minddream/config/CorsConfig.java",
+        "backend/src/main/java/com/minddream/config/SwaggerConfig.java",
+        "backend/src/main/java/com/minddream/controller/AIAnalysisController.java",
+        "backend/src/main/java/com/minddream/controller/DreamController.java",
+        "backend/src/main/java/com/minddream/controller/StatisticsController.java",
+        "backend/src/main/java/com/minddream/dto/StatisticsDTO.java",
+        "backend/src/main/java/com/minddream/entity/Dream.java",
+        "backend/src/main/java/com/minddream/entity/Statistics.java",
+        "backend/src/main/java/com/minddream/repository/DreamRepository.java",
+        "backend/src/main/java/com/minddream/repository/StatisticsRepository.java",
+        "backend/src/main/java/com/minddream/service/DreamService.java",
+        "backend/src/main/java/com/minddream/service/StatisticsService.java",
+        "backend/src/main/java/com/minddream/util/DataImporter.java",
+        "backend/src/main/resources/schema.sql",
+        "frontend/index.html"
+      ]
+    }
+  },
+  "routes": [
+    "/",
+    "/dreams",
+    "/search",
+    "/statistics",
+    "/dreams/:id",
+    "/dreams/:id/analyze"
+  ],
+  "readme_excerpt": "# 🌙 MindDream · 心理梦境分析平台\n<div align=\"center\">\n**探索潜意识的奥秘 · Dream Analytics Platform**\n[![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=openjdk)](https://openjdk.org/)\n[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-brightgreen?style=flat-square&logo=springboot)](https://spring.io/projects/spring-boot)\n[![Vue](https://img.shields.io/badge/Vue-3.4-42b883?style=flat-square&logo=vuedotjs)](https://vuejs.org/)\n[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat-square&logo=mysql)](https://www.mysql.com/)\n[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)\n*项目周期：2025.12 — 2026.05（共 6 个月）*\n</div>\n---\n## 📑 目录\n| 章节 | 说明 |\n|------|------|\n| [项目简介](#-项目简介) | 核心目标与定位 |\n| [系统架构](#-系统架构) | 前后端与数据库架构 |\n| [技术栈](#-技术栈) | 后端 / 前端技术选型 |\n| [项目结构](#-项目结构) | 目录与文件说明 |\n| [功能特性](#-功能特性) | 各页面与模块说明 |\n| [API 接口](#-api-接口一览) | REST 接口一览 |\n| [快速开始](#-快速开始) | 环境、数据库、启动步骤 |\n| [项目路线图](#-项目路线图v20-计划) | 阶段规划与当前阶段 |\n| [项目管理](#-项目管理) | 文档导航、开发流程、版本与入口速查 |\n| [生产部署](#-生产部署) | 打包与 Nginx 配置 |\n---\n## 📖 项目简介\n**MindDream** 是一个专业的心理学梦境数据分析平台，致力于通过 AI 技术帮助用户探索梦境背后的潜意识状态。平台集成了梦境数据管理、多维度可视化统计、智能 AI 分析和对话功能，旨在为每一个灵魂架起通往潜意识世界的桥梁。\n### 🎯 核心目标\n| 目标 | 说明 |\n|------|------|\n| 🧠 情绪分类 | 对梦境情绪做 6 分类，准确率目标 ≥ 70% |\n| 🔒 隐私保护 | 确保用户数据 100% 合规存储 |\n| 🚀 开源社区 | 项目发布至 GitHub，目标 ≥ 50 Stars |\n| 📊 可视化洞察 | 生成梦境中的潜意识关键词云、潜在示例 |\n---\n## 🏗️ 系统架构\n```\n┌────────────────────────────────────────────────────────────┐\n│                        用户浏览器                           │\n│              Vue 3 + Vite + Element Plus + ECharts          │\n│                  Apple Liquid Glass UI 风格                  │\n└────────────────────┬───────────────────────────────────────┘\n│ HTTP / REST API\n▼",
+  "run_command_candidates": [
+    "npm run dev",
+    "npm run preview"
+  ],
+  "feature_candidates": [
+    "dreams",
+    "search",
+    "statistics",
+    "dreams/:id",
+    "dreams/:id/analyze",
+    "AIAnalysis",
+    "Dashboard",
+    "DreamDetail",
+    "DreamList",
+    "NotFound",
+    "Search",
+    "Statistics",
+    "SearchRequest",
+    "dream",
+    "ArtisticEffects",
+    "DreamButton",
+    "DreamHeroSection",
+    "DreamInput",
+    "DreamLoader",
+    "DreamTag",
+    "GlassCard",
+    "SplineBackground",
+    "SplineTexture"
+  ]
+}

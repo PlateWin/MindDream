@@ -1,0 +1,24 @@
+{
+  "name": "minddream-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MindDream 心理梦境分析平台前端",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@splinetool/runtime": "^1.12.33",
+    "axios": "^1.6.5",
+    "echarts": "^5.4.3",
+    "element-plus": "^2.5.4",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.0.11"
+  }
+}

@@ -1,0 +1,630 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #FAFBFC;
+  color: #0F172A;
+  overflow-x: hidden;
+  position: relative;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ========== 梦幻光晕背景 ========== */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(165, 180, 252, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(252, 231, 243, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(224, 242, 254, 0.06) 0%, transparent 50%);
+  animation: etherealDrift 40s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes etherealDrift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  33% {
+    transform: translate(8%, -8%) rotate(120deg) scale(1.05);
+    opacity: 0.8;
+  }
+
+  66% {
+    transform: translate(-8%, 8%) rotate(240deg) scale(0.95);
+    opacity: 0.9;
+  }
+}
+
+/* ========== 柔和光斑 ========== */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(129, 140, 248, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 40%);
+  animation: softGlow 20s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes softGlow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.03);
+  }
+}
+
+/* ========== 滚动条 ========== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #A5B4FC 0%, #F9A8D4 100%);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #818CF8 0%, #EC4899 100%);
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.4);
+}
+
+/* ========== 艺术化卡片 ========== */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(40px) saturate(180%);
+  border-radius: 32px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow:
+    0 2px 12px rgba(148, 163, 184, 0.04),
+    0 8px 32px rgba(148, 163, 184, 0.02),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(165, 180, 252, 0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: all 0.8s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+  top: -50%;
+  left: -50%;
+  animation: cardShimmer 4s ease-in-out infinite;
+}
+
+@keyframes cardShimmer {
+
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #A5B4FC, #EC4899, #F9A8D4, #A5B4FC);
+  background-size: 300% 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: gradientSlide 6s linear infinite;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+@keyframes gradientSlide {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow:
+    0 12px 40px rgba(129, 140, 248, 0.12),
+    0 24px 80px rgba(236, 72, 153, 0.08),
+    0 0 0 1px rgba(165, 180, 252, 0.15) inset;
+  border-color: rgba(165, 180, 252, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ========== 标题艺术字 ========== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #0F172A;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  animation: titleFadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.96);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #6366F1 0%, #EC4899 40%, #F472B6 70%, #A5B4FC 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientFlow 6s ease-in-out infinite;
+  font-weight: 800;
+}
+
+@keyframes gradientFlow {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ========== 链接艺术效果 ========== */
+a {
+  color: #6366F1;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: inline-block;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366F1, #EC4899);
+  transition: width 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 2px;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:hover {
+  color: #4F46E5;
+  transform: translateY(-2px);
+}
+
+/* ========== Element Plus 艺术主题 ========== */
+:root {
+  --el-color-primary: #6366F1;
+  --el-color-primary-light-3: #A5B4FC;
+  --el-color-primary-light-5: #C7D2FE;
+  --el-color-primary-light-7: #DDD6FE;
+  --el-color-primary-light-8: #EDE9FE;
+  --el-color-primary-light-9: #F5F3FF;
+  --el-color-primary-dark-2: #4F46E5;
+
+  --el-bg-color: rgba(255, 255, 255, 0.8);
+  --el-bg-color-page: #FAFBFC;
+  --el-bg-color-overlay: rgba(255, 255, 255, 0.95);
+  --el-text-color-primary: #0F172A;
+  --el-text-color-regular: #334155;
+  --el-text-color-secondary: #64748B;
+  --el-text-color-placeholder: #94A3B8;
+  --el-border-color: rgba(226, 232, 240, 0.6);
+  --el-border-color-light: rgba(241, 245, 249, 0.6);
+  --el-border-color-lighter: rgba(248, 250, 252, 0.6);
+  --el-border-color-extra-light: rgba(255, 255, 255, 0.4);
+  --el-fill-color-blank: rgba(255, 255, 255, 0.8);
+  --el-fill-color: rgba(248, 250, 252, 0.8);
+  --el-fill-color-light: rgba(241, 245, 249, 0.7);
+  --el-fill-color-lighter: rgba(226, 232, 240, 0.6);
+  --el-fill-color-extra-light: rgba(203, 213, 225, 0.5);
+  --el-box-shadow: 0 2px 12px rgba(100, 116, 139, 0.06), 0 8px 32px rgba(100, 116, 139, 0.03);
+  --el-box-shadow-light: 0 2px 8px rgba(100, 116, 139, 0.04);
+  --el-box-shadow-lighter: 0 1px 4px rgba(100, 116, 139, 0.02);
+  --el-box-shadow-dark: 0 8px 32px rgba(100, 116, 139, 0.12);
+}
+
+/* ========== 浮动粒子 ========== */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(circle, rgba(165, 180, 252, 0.4), rgba(249, 168, 212, 0.3));
+  border-radius: 50%;
+  animation: particleRise 25s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(165, 180, 252, 0.3);
+}
+
+.particle:nth-child(2n) {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.4), rgba(165, 180, 252, 0.2));
+  animation-duration: 32s;
+  width: 3px;
+  height: 3px;
+}
+
+.particle:nth-child(3n) {
+  background: radial-gradient(circle, rgba(249, 168, 212, 0.5), rgba(224, 242, 254, 0.3));
+  animation-duration: 28s;
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translateY(110vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.4;
+  }
+
+  85% {
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(-10vh) translateX(80px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ========== 加载骨架 ========== */
+.skeleton {
+  background: linear-gradient(90deg, rgba(241, 245, 249, 0.4) 25%, rgba(226, 232, 240, 0.6) 50%, rgba(241, 245, 249, 0.4) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 2.5s ease-in-out infinite;
+  border-radius: 16px;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ========== 按钮艺术效果 (仅非 Element Plus 按钮) ========== */
+button:not(.el-button):not([class*="el-"]):not(.quick-btn):not(.chat-send-btn),
+.el-button--primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 16px;
+}
+
+button:not(.el-button):not([class*="el-"]):not(.quick-btn):not(.chat-send-btn)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  transform: translate(-50%, -50%);
+  transition: width 0.8s ease, height 0.8s ease;
+}
+
+button:not(.el-button):not([class*="el-"]):not(.quick-btn):not(.chat-send-btn):hover::before {
+  width: 450px;
+  height: 450px;
+}
+
+button:not(.el-button):not([class*="el-"]):not(.quick-btn):not(.chat-send-btn):hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+button:not(.el-button):not([class*="el-"]):not(.quick-btn):not(.chat-send-btn):active {
+  transform: translateY(-2px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* ========== 页面转场 ========== */
+.page-enter-active {
+  animation: pageEnter 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.page-leave-active {
+  animation: pageLeave 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    filter: blur(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageLeave {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.05);
+    filter: blur(12px);
+  }
+}
+
+/* ========== 工具类 ========== */
+.container-padding {
+  padding: 48px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* ========== 玻璃态效果 ========== */
+.glass {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(50px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 8px 32px rgba(148, 163, 184, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+/* ========== 光晕效果 ========== */
+.glow {
+  position: relative;
+}
+
+.glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(165, 180, 252, 0.15) 0%, transparent 65%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(30px);
+}
+
+.glow:hover::before {
+  opacity: 1;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ========== 浮动动画 ========== */
+.float {
+  animation: gentleFloat 8s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) scale(1.02);
+  }
+}
+
+/* ========== 阴影层次 ========== */
+.shadow-soft {
+  box-shadow:
+    0 2px 4px rgba(148, 163, 184, 0.04),
+    0 4px 8px rgba(148, 163, 184, 0.02);
+}
+
+.shadow-medium {
+  box-shadow:
+    0 4px 12px rgba(148, 163, 184, 0.06),
+    0 12px 24px rgba(148, 163, 184, 0.04);
+}
+
+.shadow-strong {
+  box-shadow:
+    0 8px 24px rgba(129, 140, 248, 0.1),
+    0 20px 48px rgba(236, 72, 153, 0.06);
+}
+
+/* ========== 滚动动画 ========== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== 弹入动画 ========== */
+.bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  70% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container-padding {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .container-padding {
+    padding: 20px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+}

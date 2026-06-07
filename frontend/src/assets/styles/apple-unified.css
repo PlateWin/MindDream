@@ -1,0 +1,615 @@
+/* ==========================================
+   Apple-Style Deep UI Unification — MindDream
+   全面覆盖 Element Plus + 原生控件
+   ========================================== */
+
+/* ========== CSS 变量统一 ========== */
+:root {
+    /* 覆盖 Element Plus 核心色 */
+    --el-color-primary: #FF6A88;
+    --el-color-primary-light-3: #FF9A8B;
+    --el-color-primary-light-5: #FFB6C1;
+    --el-color-primary-light-7: #FFD4DB;
+    --el-color-primary-light-8: #FFE8EC;
+    --el-color-primary-light-9: #FFF5F7;
+    --el-color-primary-dark-2: #E8506E;
+    --el-border-radius-base: 14px;
+    --el-border-radius-small: 10px;
+    --el-border-radius-round: 100px;
+
+    /* 覆盖 Element Plus 边框 */
+    --el-border-color: rgba(255, 217, 131, 0.2);
+    --el-border-color-hover: rgba(255, 170, 128, 0.35);
+    --el-border-color-light: rgba(255, 217, 131, 0.15);
+    --el-border-color-lighter: rgba(255, 217, 131, 0.1);
+
+    /* 覆盖背景 */
+    --el-fill-color-blank: rgba(255, 255, 255, 0.75);
+    --el-bg-color: rgba(255, 255, 255, 0.75);
+    --el-bg-color-overlay: rgba(255, 255, 255, 0.92);
+
+    /* 覆盖阴影 */
+    --el-box-shadow: 0 8px 32px rgba(255, 154, 139, 0.08);
+    --el-box-shadow-light: 0 4px 16px rgba(255, 154, 139, 0.06);
+    --el-box-shadow-lighter: 0 2px 8px rgba(255, 154, 139, 0.04);
+
+    /* Apple 动画函数 */
+    --apple-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --apple-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =============================================
+   Element Plus Input 输入框 — 深度覆盖
+   ============================================= */
+.el-input {
+    --el-input-border-radius: 14px !important;
+}
+
+/* 核心：去掉 EP 默认灰色 box-shadow 边框 */
+.el-input__wrapper {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 0 0 1.5px rgba(255, 217, 131, 0.2) inset,
+        0 2px 8px rgba(255, 154, 139, 0.04) !important;
+    padding: 6px 16px !important;
+    transition: all 0.4s var(--apple-ease) !important;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.el-input__wrapper:hover {
+    box-shadow: 0 0 0 1.5px rgba(255, 170, 128, 0.35) inset,
+        0 4px 16px rgba(255, 154, 139, 0.08) !important;
+}
+
+.el-input__wrapper.is-focus,
+.el-input.is-focus .el-input__wrapper {
+    box-shadow: 0 0 0 2px rgba(255, 154, 139, 0.45) inset,
+        0 0 0 5px rgba(255, 154, 139, 0.08),
+        0 4px 20px rgba(255, 154, 139, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    transform: translateY(-1px);
+}
+
+.el-input__inner {
+    font-family: inherit !important;
+    font-size: 15px !important;
+    color: #0F172A !important;
+    --el-input-inner-height: 32px !important;
+}
+
+.el-input__inner::placeholder {
+    color: #94A3B8 !important;
+}
+
+/* Textarea */
+.el-textarea__inner {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 16px !important;
+    border: 1.5px solid rgba(255, 217, 131, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(255, 154, 139, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    padding: 14px 18px !important;
+    font-family: inherit !important;
+    font-size: 15px !important;
+    color: #0F172A !important;
+    transition: all 0.4s var(--apple-ease) !important;
+    backdrop-filter: blur(20px) saturate(150%);
+}
+
+.el-textarea__inner:hover {
+    border-color: rgba(255, 170, 128, 0.35) !important;
+}
+
+.el-textarea__inner:focus {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(255, 154, 139, 0.45) !important;
+    box-shadow: 0 0 0 4px rgba(255, 154, 139, 0.08),
+        0 4px 20px rgba(255, 154, 139, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transform: translateY(-1px);
+}
+
+/* =============================================
+   Element Plus Select 下拉框 — 深度覆盖
+   ============================================= */
+.el-select {
+    --el-select-border-color-hover: rgba(255, 170, 128, 0.35);
+    --el-select-input-focus-border-color: rgba(255, 154, 139, 0.45);
+}
+
+.el-select .el-input__wrapper {
+    border-radius: 14px !important;
+    cursor: pointer !important;
+}
+
+/* Dashboard form selects — force exact 48px height at every EP DOM level */
+.dream-form-select.el-select {
+    height: 48px !important;
+}
+
+.dream-form-select .el-input {
+    height: 48px !important;
+    --el-component-size: 48px !important;
+}
+
+.dream-form-select .el-input__wrapper,
+.dream-form-select .el-select__wrapper {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    box-sizing: border-box !important;
+    padding: 0 20px !important;
+    border-radius: 16px !important;
+    background-color: #FFFFFF !important;
+    border: none !important;
+    box-shadow:
+        0 0 0 1.5px rgba(255, 200, 170, 0.25) inset,
+        0 2px 8px rgba(255, 154, 139, 0.04) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.dream-form-select .el-input__inner,
+.dream-form-select .el-select__placeholder {
+    height: 100% !important;
+    line-height: 48px !important;
+    font-size: 15px !important;
+    color: #0F172A !important;
+}
+
+.dream-form-select .el-input__inner::placeholder,
+.dream-form-select .el-select__placeholder.is-transparent {
+    color: #94A3B8 !important;
+}
+
+.dream-form-select .el-input__wrapper:hover,
+.dream-form-select .el-select__wrapper:hover {
+    box-shadow:
+        0 0 0 1.5px rgba(255, 170, 128, 0.35) inset,
+        0 4px 16px rgba(255, 154, 139, 0.08) !important;
+}
+
+.dream-form-select .el-input.is-focus .el-input__wrapper,
+.dream-form-select .el-input__wrapper.is-focus,
+.dream-form-select .el-select__wrapper.is-focused {
+    background-color: #FFFFFF !important;
+    box-shadow:
+        0 0 0 2px rgba(255, 154, 139, 0.4) inset,
+        0 0 0 5px rgba(255, 154, 139, 0.08),
+        0 4px 20px rgba(255, 154, 139, 0.12) !important;
+}
+
+.dream-form-select .el-select__suffix {
+    color: #FF9A8B !important;
+}
+
+/* ★ 核心: 下拉弹出面板 (el-popper) — 抓住 teleported 到 body 的 DOM */
+.el-select__popper,
+.el-popper.is-pure,
+.el-select-dropdown,
+body>.el-popper,
+.el-popper[role="tooltip"],
+.el-popper.is-light {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(60px) saturate(200%) brightness(105%) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(200%) brightness(105%) !important;
+    border: 1px solid rgba(255, 217, 131, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 20px 60px rgba(100, 116, 139, 0.12),
+        0 8px 24px rgba(255, 154, 139, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    overflow: hidden !important;
+    padding: 6px !important;
+}
+
+/* 下拉面板的箭头 */
+.el-popper__arrow,
+.el-select__popper .el-popper__arrow {
+    display: none !important;
+}
+
+/* 下拉面板内的滚动区域 */
+.el-select-dropdown__wrap,
+.el-scrollbar__wrap {
+    border-radius: 12px;
+}
+
+/* 下拉选项 */
+.el-select-dropdown__item {
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
+    border-radius: 10px !important;
+    margin: 2px 0 !important;
+    transition: all 0.25s var(--apple-ease) !important;
+    font-weight: 500 !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+}
+
+.el-select-dropdown__item:hover,
+.el-select-dropdown__item.hover {
+    background-color: rgba(255, 154, 139, 0.08) !important;
+    color: #FF6A88 !important;
+}
+
+.el-select-dropdown__item.is-selected,
+.el-select-dropdown__item.selected {
+    background: linear-gradient(135deg, rgba(255, 154, 139, 0.14), rgba(255, 217, 131, 0.08)) !important;
+    color: #FF6A88 !important;
+    font-weight: 700 !important;
+}
+
+/* 下拉面板空状态 */
+.el-select-dropdown__empty {
+    color: #94A3B8 !important;
+    font-size: 14px !important;
+    padding: 20px !important;
+}
+
+/* =============================================
+   Element Plus Pagination — 深度覆盖
+   ============================================= */
+.el-pagination {
+    --el-pagination-bg-color: rgba(255, 255, 255, 0.7);
+    --el-pagination-hover-fill: rgba(255, 154, 139, 0.08);
+    --el-pagination-hover-color: #FF6A88;
+    gap: 6px !important;
+}
+
+.el-pagination button,
+.el-pager li {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1.5px solid rgba(255, 217, 131, 0.15) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.35s var(--apple-ease) !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    line-height: 34px !important;
+    box-shadow: none !important;
+}
+
+.el-pagination button:hover,
+.el-pager li:hover {
+    background: rgba(255, 154, 139, 0.08) !important;
+    border-color: rgba(255, 154, 139, 0.3) !important;
+    color: #FF6A88 !important;
+    transform: translateY(-2px) !important;
+}
+
+.el-pagination.is-background .el-pager li.is-active,
+.el-pager li.is-active,
+.el-pager li.active {
+    background: linear-gradient(135deg, #FF9A8B, #FFD983) !important;
+    border-color: transparent !important;
+    color: white !important;
+    box-shadow: 0 4px 16px rgba(255, 154, 139, 0.35) !important;
+    transform: translateY(-1px) scale(1.05) !important;
+    font-weight: 700 !important;
+}
+
+/* Pagination jumper */
+.el-pagination .el-input__wrapper {
+    border-radius: 10px !important;
+    padding: 2px 8px !important;
+}
+
+/* =============================================
+   Element Plus Button — 覆盖 main.css 的通用 button
+   ============================================= */
+/* 重置 main.css 对所有 button 的激进样式 */
+.el-button {
+    box-shadow: none !important;
+}
+
+.el-button::before {
+    display: none !important;
+}
+
+.el-button:hover {
+    transform: translateY(-2px) !important;
+}
+
+.el-button:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+.el-button--primary {
+    background: linear-gradient(135deg, #FF9A8B, #FF6A88) !important;
+    border-color: transparent !important;
+    border-radius: 14px !important;
+}
+
+.el-button--primary:hover {
+    box-shadow: 0 8px 28px rgba(255, 154, 139, 0.3) !important;
+}
+
+/* text 按钮 */
+.el-button--text,
+.el-button.is-text {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    color: #FF6A88 !important;
+}
+
+.el-button--text:hover,
+.el-button.is-text:hover {
+    background: rgba(255, 154, 139, 0.08) !important;
+    box-shadow: none !important;
+}
+
+/* =============================================
+   Element Plus Dialog 对话框
+   ============================================= */
+.el-overlay {
+    backdrop-filter: blur(8px) saturate(120%) !important;
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.el-dialog {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(60px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 24px !important;
+    box-shadow:
+        0 24px 80px rgba(100, 116, 139, 0.15),
+        0 8px 32px rgba(255, 154, 139, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    overflow: hidden !important;
+}
+
+.el-dialog__header {
+    padding: 24px 28px 16px !important;
+    border-bottom: 1px solid rgba(255, 217, 131, 0.12);
+}
+
+.el-dialog__body {
+    padding: 20px 28px 28px !important;
+}
+
+/* =============================================
+   Element Plus Message 消息提示
+   ============================================= */
+.el-message {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 12px 40px rgba(100, 116, 139, 0.12),
+        0 4px 16px rgba(255, 154, 139, 0.06) !important;
+    padding: 14px 24px !important;
+}
+
+.el-message--success {
+    border-left: 4px solid #A8D5BA !important;
+}
+
+.el-message--error {
+    border-left: 4px solid #FF6A88 !important;
+}
+
+.el-message--warning {
+    border-left: 4px solid #FFD983 !important;
+}
+
+.el-message--info {
+    border-left: 4px solid #A5B4FC !important;
+}
+
+.el-message .el-message__content {
+    font-weight: 500 !important;
+    color: #334155 !important;
+}
+
+/* =============================================
+   Element Plus Tag 标签
+   ============================================= */
+.el-tag {
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    border: 1px solid transparent !important;
+    transition: all 0.3s var(--apple-ease) !important;
+}
+
+/* =============================================
+   Element Plus Menu 菜单 — 增强动效
+   ============================================= */
+.el-menu--horizontal>.el-menu-item {
+    transition: all 0.4s var(--apple-ease) !important;
+}
+
+.el-menu--horizontal>.el-menu-item:hover {
+    background-color: rgba(255, 154, 139, 0.08) !important;
+}
+
+/* 去掉 EP 菜单默认的底部边框高亮线 */
+.el-menu--horizontal .el-menu-item:not(.is-disabled):hover,
+.el-menu--horizontal .el-menu-item:not(.is-disabled):focus {
+    border-bottom: none !important;
+}
+
+/* =============================================
+   Element Plus Tooltip / Popover
+   ============================================= */
+.el-tooltip__popper,
+.el-popover.el-popper {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    border: 1px solid rgba(255, 217, 131, 0.2) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 40px rgba(100, 116, 139, 0.1) !important;
+    color: #334155 !important;
+}
+
+/* =============================================
+   原生表单控件 (Dashboard 的 input/select/textarea)
+   ============================================= */
+input.dream-form-input,
+select.dream-form-input,
+textarea.dream-form-input {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(40px) saturate(160%);
+    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    border: 1.5px solid rgba(255, 217, 131, 0.2) !important;
+    border-radius: 16px !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    font-family: inherit !important;
+    color: #0F172A !important;
+    outline: none !important;
+    box-shadow:
+        0 2px 8px rgba(255, 154, 139, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    transition: all 0.4s var(--apple-ease) !important;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input.dream-form-input:hover,
+select.dream-form-input:hover,
+textarea.dream-form-input:hover {
+    border-color: rgba(255, 170, 128, 0.35) !important;
+    box-shadow:
+        0 4px 16px rgba(255, 154, 139, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
+input.dream-form-input:focus,
+select.dream-form-input:focus,
+textarea.dream-form-input:focus {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: rgba(255, 154, 139, 0.45) !important;
+    box-shadow:
+        0 0 0 4px rgba(255, 154, 139, 0.1),
+        0 4px 20px rgba(255, 154, 139, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transform: translateY(-1px);
+}
+
+input.dream-form-input::placeholder,
+textarea.dream-form-input::placeholder {
+    color: #94A3B8 !important;
+}
+
+select.dream-form-input {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23FF9A8B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 16px center !important;
+    padding-right: 45px !important;
+}
+
+/* =============================================
+   Element Plus Loading
+   ============================================= */
+.el-loading-mask {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: inherit;
+}
+
+.el-loading-spinner .circular .path {
+    stroke: #FF9A8B !important;
+}
+
+/* =============================================
+   页面过渡动画 (更 Apple)
+   ============================================= */
+.page-enter-active {
+    animation: applePageIn 0.5s var(--apple-ease) !important;
+}
+
+.page-leave-active {
+    animation: applePageOut 0.3s var(--apple-ease) !important;
+}
+
+@keyframes applePageIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.99);
+        filter: blur(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes applePageOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-12px) scale(1.01);
+        filter: blur(4px);
+    }
+}
+
+/* =============================================
+   全局微交互增强
+   ============================================= */
+
+/* 聚焦环 */
+*:focus-visible {
+    outline: 2px solid rgba(255, 154, 139, 0.5) !important;
+    outline-offset: 2px !important;
+}
+
+/* 滚动条 — Apple 纤细风格 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 154, 139, 0.25);
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 154, 139, 0.45);
+}
+
+/* 选中文字颜色 */
+::selection {
+    background: rgba(255, 154, 139, 0.25);
+    color: #0F172A;
+}
+
+/* =============================================
+   修复 main.css 的全局 button 样式导致的冲突
+   ============================================= */
+/* main.css 给所有 button 添加了 ::before / hover 动画，
+   这和 Element Plus/DreamButton 冲突。缩小作用域。 */
+/* button.submit-dream-btn and .dream-button keep their original ::before animations */
+
+/* 但是去掉对 EP 组件的影响 */
+.el-pagination button::before,
+.el-dialog button::before,
+.el-message-box button::before,
+.quick-btn::before,
+.chat-send-btn::before {
+    display: none !important;
+}
+
+/* 阻止 main.css 对 EP/chat 按钮的 hover 缩放 */
+.el-pagination button:hover,
+.quick-btn:hover,
+.chat-send-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: none !important;
+}
